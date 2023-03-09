@@ -1,3 +1,11 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut
+} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyBH0QDNiz3Xc30KP2uKDcPkfc6oX3oSMtA",
     authDomain: "pay-in-portal.firebaseapp.com",
@@ -7,20 +15,33 @@ const firebaseConfig = {
     appId: "1:976371145354:web:12570d2455b88f942feb73"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth()
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
-// var contactFormDB = firebase.database().ref("contactForm");
-// document.getElementById("contactForm").addEventListener("submit", submitForm);
+const form = document.getElementById('contactForm');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevents the default form submission
+  submitForm(); // Calls the submitForm function
+});
+
 
 function submitForm() {
-    e.preventDefault();
-    var name = getElementVal("name");
-    var password = getElementVal("pass");
+    var name = document.getElementById("name").value;
+    var password = document.getElementById("pass").value;
     console.log("Hello");
     console.log(name);
+
+    createUserWithEmailAndPassword(auth, name, password).then(() => {
+        // var usr = auth.currentUser;
+        console.log("Done");
+    })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+            // window.alert("Message : " + errorMessage);
+        })
 }
-const getElementVal = (id) => {
-    return document.getElementById(id).value;
-};
+
