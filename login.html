@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    </script>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <form id="contactForm">
+            <div class="imgcontainer">
+
+                <img src="square_logo.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="name" required>
+                <br>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="pass" required>
+                <br>
+
+                <button type="submit">Login</button>
+                <br>
+                <label>
+                    <input type="checkbox" checked="checked" id="remember" > Remember me
+                    </label>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+
+
+        </form>
+    </div>
+    <script src="mail.js"></script>
+
+</body>
+
+</html>
