@@ -20,9 +20,20 @@ const auth = getAuth();
 
 const form = document.getElementById('contactForm');
 
+
+//make a eventlistener for the form and then call the function
+function login(){
+
+
+    signInWithEmailAndPassword(auth, document.getElementById("name").value, document.getElementById("pass").value).then(() => {
+        console.log("Done");
+    })
+    
+}
+
 form.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevents the default form submission
-  submitForm(); // Calls the submitForm function
+    e.preventDefault(); // Prevents the default form submission
+    submitForm(); // Calls the submitForm function
 });
 
 
@@ -44,4 +55,5 @@ function submitForm() {
             // window.alert("Message : " + errorMessage);
         })
 }
+
 
